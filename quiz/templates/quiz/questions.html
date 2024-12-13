@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h2 {
+            font-size: 18px;
+            color: #555;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Questions</h1>
+        <form method="post" action="{% url 'submit_answers' %}">
+            {% csrf_token %}
+            {% for question in questions %}
+                <div class="question">
+                    <h2>Question {{ forloop.counter }}: {{ question.question_text }}</h2>
+                    <div class="options">
+                        <input type="hidden" name="question_id" value="{{ question.id }}">
+                        <label><input type="radio" name="option_{{ question.id }}" value="{{ question.option1 }}"> {{ question.option1 }}</label>
+                        <label><input type="radio" name="option_{{ question.id }}" value="{{ question.option2 }}"> {{ question.option2 }}</label>
+                        <label><input type="radio" name="option_{{ question.id }}" value="{{ question.option3 }}"> {{ question.option3 }}</label>
+                        <label><input type="radio" name="option_{{ question.id }}" value="{{ question.option4 }}"> {{ question.option4 }}</label>
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
