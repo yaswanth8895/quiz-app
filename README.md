@@ -79,5 +79,32 @@ This is a simple Django-based quiz application. The app allows a user to start a
     - In the admin interface, click on "Questions" and then "Add Question" to add new questions to the database. Fill in the question text and options, and specify the correct option.
 
 ## Project Structure
-quiz_project/ ├── db.sqlite3 ├── manage.py ├── Procfile ├── quiz/ │ ├── init.py │ ├── admin.py │ ├── apps.py │ ├── migrations/ │ ├── models.py │ ├── templates/ │ │ ├── quiz/ │ │ ├── questions.html │ │ ├── results.html │ ├── tests.py │ ├── urls.py │ ├── views.py ├── quiz_project/ │ ├── init.py │ ├── asgi.py │ ├── settings.py │ ├── urls.py │ ├── wsgi.py ├── README.md ├── requirements.txt ├── staticfiles/ │ ├── admin/ ├── venv/ │ ├── bin/ │ ├── include/ │ ├── lib/ │ ├── pyvenv.cfg
-
+```bash
+quiz_project/
+├── db.sqlite3                 # SQLite database
+├── manage.py                  # Django management commands
+├── Procfile                   # For Heroku deployment
+├── quiz/                       # Quiz app directory
+│   ├── __init__.py
+│   ├── admin.py                # Admin interface configuration
+│   ├── apps.py                 # App configuration
+│   ├── migrations/             # Database migrations
+│   ├── models.py               # Data models for questions
+│   ├── templates/              # Template directory for quiz app
+│   │   ├── quiz/               # Templates for quiz
+│   │   ├── questions.html      # Template for displaying questions
+│   │   ├── results.html        # Template for displaying results
+│   ├── tests.py                # Unit tests for the app
+│   ├── urls.py                 # URL routing for quiz app
+│   ├── views.py                # Views for quiz functionality
+├── quiz_project/               # Main project directory
+│   ├── __init__.py
+│   ├── asgi.py                 # ASGI entry point
+│   ├── settings.py             # Project settings
+│   ├── urls.py                 # URL routing for the project
+│   ├── wsgi.py                 # WSGI entry point
+├── README.md                   # Project overview and instructions
+├── requirements.txt            # Project dependencies
+├── staticfiles/                # Static files (CSS, JS, etc.)
+│   ├── admin/                  # Admin interface static files
+```
