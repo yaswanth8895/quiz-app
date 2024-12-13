@@ -15,8 +15,8 @@ This is a simple Django-based quiz application. The app allows a user to start a
 - The quiz consists of exactly 3 questions per session.
 
 ## Requirements
-- Python 3.x
-- Django 4.x
+- Python 3.9.6
+- Django 4.2.17
 
 ## Installation
 
@@ -79,3 +79,5 @@ This is a simple Django-based quiz application. The app allows a user to start a
     - In the admin interface, click on "Questions" and then "Add Question" to add new questions to the database. Fill in the question text and options, and specify the correct option.
 
 ## Project Structure
+quiz_project/ ├── db.sqlite3 ├── manage.py ├── Procfile ├── quiz/ │ ├── init.py │ ├── admin.py │ ├── apps.py │ ├── migrations/ │ ├── models.py │ ├── templates/ │ │ ├── quiz/ │ │ ├── questions.html │ │ ├── results.html │ ├── tests.py │ ├── urls.py │ ├── views.py ├── quiz_project/ │ ├── init.py │ ├── asgi.py │ ├── settings.py │ ├── urls.py │ ├── wsgi.py ├── README.md ├── requirements.txt ├── staticfiles/ │ ├── admin/ ├── venv/ │ ├── bin/ │ ├── include/ │ ├── lib/ │ ├── pyvenv.cfg
+
