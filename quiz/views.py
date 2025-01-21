@@ -4,9 +4,9 @@ from .models import Question, QuizSession
 import random
 
 def start_quiz(request):
-    # Clear the previous session if it exists
-    if 'quiz_session_id' in request.session:
-        del request.session['quiz_session_id']
+    session_id = request.session.get('quiz_session_id')
+    if session_id:
+        QuizSession.objects.filter(id=session_id).delete()
     
     session = QuizSession.objects.create()
     request.session['quiz_session_id'] = session.id
@@ -17,12 +17,14 @@ def get_questions(request):
     if not session_id:
         return HttpResponse("No active quiz session found.")
     
-    session = QuizSession.objects.get(id=session_id)
-    #asked_questions = session.asked_questions.all()
+    try:
+        session = QuizSession.objects.get(id=session_id)
+    except QuizSession.DoesNotExist:
+        return HttpResponse("Invalid quiz session.")
     remaining_questions = Question.objects.all()
     
-    #if remaining_questions.count() < 3:
-    #    return HttpResponse("Not enough questions available to start the quiz.")
+    if remaining_questions.count() < 3:
+        return HttpResponse("Not enough questions available to start the quiz.")
     
     questions = random.sample(list(remaining_questions), 3)
     for question in questions:
